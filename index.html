@@ -1597,14 +1597,15 @@ function exportData() {
   const exportObj = {
     projects: state.projects,
     planting: state.planting || [],
-    subcultures: getSubcultureRecords()
+    subcultures: getSubcultureRecords(),
+    syncConfig: syncConfig
   };
   const blob = new Blob([JSON.stringify(exportObj, null, 2)], { type:'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = `长得好_数据_${new Date().toISOString().slice(0,10)}.json`;
   a.click();
-  toast('已导出');
+  toast('已导出（含同步配置）');
 }
 
 function importData(e) {
@@ -1617,9 +1618,16 @@ function importData(e) {
       if (data.projects) state.projects = data.projects;
       if (data.planting) state.planting = data.planting;
       if (data.subcultures) setSubcultureRecords(data.subcultures);
+      if (data.syncConfig && data.syncConfig.token) {
+        syncConfig = data.syncConfig;
+        localStorage.setItem(SYNC_KEY, JSON.stringify(syncConfig));
+        document.getElementById('syncToken').value = syncConfig.token || '';
+        document.getElementById('syncGistId').value = syncConfig.gistId || '';
+        updateSyncStatus();
+      }
       save();
       renderAll();
-      toast('导入成功');
+      toast('导入成功（含同步配置）');
     } catch(err) { toast('导入失败：格式错误'); }
   };
   reader.readAsText(file);
