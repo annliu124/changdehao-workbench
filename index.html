@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>长得好 · 农业研究工作台</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="长得好">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#166534">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
+<style>
+  :root {
+    --green-50: #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --earth-100: #f5f0e6;
+    --earth-300: #d6c5a8;
+    --earth-500: #a78b5f;
+    --amber-400: #fbbf24;
+    --amber-500: #f59e0b;
+    --red-400: #f87171;
+    --red-500: #ef4444;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --radius: 14px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow: 0 4px 14px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #f0fdf4 0%, #f5f0e6 100%);
+    color: var(--gray-800);
+    min-height: 100vh;
+    line-height: 1.6;
+    padding: 0 0 60px;
+  }
+
+  /* Header */
+  header {
+    background: linear-gradient(120deg, var(--green-700), var(--green-500));
+    color: white;
+    padding: 28px 36px 22px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 180px; height: 180px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+  }
+  header::after {
+    content: "🌱";
+    position: absolute;
+    right: 30px; top: 18px;
+    font-size: 56px;
+    opacity: 0.5;
+  }
+  .title { font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+  .subtitle { font-size: 14px; opacity: 0.9; margin-top: 4px; }
+  .header-meta {
+    margin-top: 12px;
+    display: flex;
+    gap: 18px;
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+  .header-meta span {
+    background: rgba(255,255,255,0.18);
+    padding: 4px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    background: white;
+    padding: 6px;
+    margin: 24px 36px 0;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    width: fit-content;
+    justify-content: center;
+    align-self: center;
+  }
+  body > .tabs { margin-left: auto; margin-right: auto; }
+  .tab-btn {
+    border: none;
+    background: transparent;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-500);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { background: var(--green-50); color: var(--green-700); }
+  .tab-btn.active {
+    background: var(--green-600);
+    color: white;
+    box-shadow: 0 2px 8px rgba(22,163,74,0.3);
+  }
+
+  /* Content */
+  main { padding: 24px 36px; max-width: 1280px; margin: 0 auto; }
+  .panel { display: none; animation: fadeIn 0.3s; }
+  .panel.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Cards */
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green-500); }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .project-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--green-500);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .project-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .project-card.pepper { border-top-color: #ef4444; }
+  .project-card.tomato { border-top-color: #f97316; }
+  .project-card.wheat { border-top-color: #fbbf24; }
+
+  /* 批次表格 */
+  .batch-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 8px 0 12px;
+  }
+  .batch-table th {
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray-400);
+    font-weight: 600;
+    padding: 5px 2px 4px;
+    border-bottom: 1px solid var(--gray-200);
+    white-space: nowrap;
+  }
+  .batch-table td {
+    padding: 6px 2px;
+    border-bottom: 1px solid var(--gray-100);
+    color: var(--gray-700);
+    text-align: center;
+  }
+  .batch-table tr:last-child td { border-bottom: none; }
+  .batch-table .batch-idx { color: var(--gray-400); width: 28px; text-align: left; }
+  .batch-table .batch-date { color: var(--green-600); font-weight: 600; text-align: center; }
+  .batch-table td:first-child { text-align: left; }
+  .batch-table td:last-child { text-align: right; }
+  .batch-empty {
+    text-align: center;
+    color: var(--gray-400);
+    font-size: 12px;
+    padding: 10px 0 4px;
+    font-style: italic;
+  }
+  .batch-summary {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .batch-summary .val { color: var(--gray-800); font-weight: 700; }
+
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .project-name { font-size: 17px; font-weight: 700; color: var(--gray-900); text-align: center; }
+  .project-crop-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .tag-pepper { background: #fee2e2; color: #b91c1c; }
+  .tag-tomato { background: #ffedd5; color: #c2410c; }
+  .tag-wheat { background: #fef3c7; color: #92400e; }
+  .tag-other { background: var(--gray-100); color: var(--gray-600); }
+
+  .project-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .project-meta .chip {
+    background: var(--gray-100);
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+  .project-meta .chip.vector { background: var(--earth-100); color: var(--earth-500); font-weight: 600; }
+
+  .progress-list {
+    max-height: 240px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+    padding-right: 4px;
+  }
+  .progress-list::-webkit-scrollbar { width: 5px; }
+  .progress-list::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
+  .progress-entry {
+    padding: 10px 12px;
+    background: var(--gray-50);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    border-left: 3px solid var(--green-500);
+  }
+  .progress-entry .ptime {
+    font-size: 11px;
+    color: var(--gray-400);
+    margin-bottom: 2px;
+  }
+  .progress-empty {
+    text-align: center;
+    color: var(--gray-400);
+    font-size: 13px;
+    padding: 20px;
+    font-style: italic;
+  }
+
+  .btn {
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .btn-primary { background: var(--green-600); color: white; }
+  .btn-primary:hover { background: var(--green-700); }
+  .btn-secondary { background: var(--gray-100); color: var(--gray-600); }
+  .btn-secondary:hover { background: var(--gray-200); }
+  .btn-danger { background: #fee2e2; color: #b91c1c; }
+  .btn-danger:hover { background: #fecaca; }
+  .btn-small { padding: 5px 10px; font-size: 12px; }
+
+  .card-actions { display: flex; gap: 8px; }
+
+  /* Add project */
+  .add-card {
+    background: white;
+    border: 2px dashed var(--green-300);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-height: 160px;
+    color: var(--green-600);
+  }
+  .add-card:hover { background: var(--green-50); border-color: var(--green-500); }
+  .add-card .plus { font-size: 32px; font-weight: 300; }
+  .add-card .text { font-size: 14px; font-weight: 600; }
+
+  /* Planting */
+  .planting-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 18px;
+  }
+  .planting-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: var(--shadow);
+  }
+  .planting-card.pepper { border-left: 5px solid #ef4444; }
+  .planting-card.wheat { border-left: 5px solid #fbbf24; }
+  .planting-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .planting-title { font-size: 18px; font-weight: 700; }
+  .planting-count {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--green-600);
+  }
+  .planting-count .unit { font-size: 14px; color: var(--gray-500); font-weight: 500; }
+  .planting-records {
+    margin-top: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  .planting-record {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background: var(--gray-50);
+    border-radius: 6px;
+    margin-bottom: 5px;
+    font-size: 13px;
+  }
+  .planting-record .rdate { color: var(--gray-500); }
+  .planting-record .ract { font-weight: 600; }
+
+  /* Daily Tasks */
+  .daily-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .weekday-selector {
+    display: flex;
+    gap: 4px;
+    background: white;
+    padding: 5px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+  .weekday-btn {
+    border: none;
+    background: transparent;
+    width: 38px; height: 38px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray-400);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .weekday-btn:hover { background: var(--green-50); color: var(--green-600); }
+  .weekday-btn.active { background: var(--green-600); color: white; }
+  .weekday-btn.today { box-shadow: 0 0 0 2px var(--green-300); }
+  .daily-summary {
+    font-size: 14px;
+    color: var(--gray-500);
+    margin-left: auto;
+  }
+  .daily-summary strong { color: var(--green-700); }
+
+  .task-list { display: flex; flex-direction: column; gap: 8px; }
+  .task-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-left: 5px solid var(--amber-500);
+    transition: all 0.2s;
+    cursor: pointer;
+    user-select: none;
+  }
+  .task-card:hover { box-shadow: var(--shadow-lg); }
+  .task-card.done { border-left-color: var(--green-500); opacity: 0.65; }
+  .task-card.done .task-name { text-decoration: line-through; color: var(--gray-400); }
+  .task-check {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 2.5px solid var(--gray-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    color: transparent;
+  }
+  .task-card.done .task-check {
+    background: var(--green-500);
+    border-color: var(--green-500);
+    color: white;
+  }
+  .task-card:hover .task-check { border-color: var(--green-500); }
+  .task-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--amber-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .task-card.done .task-icon { background: var(--green-100); }
+  .task-info { flex: 1; }
+  .task-name { font-size: 15px; font-weight: 700; }
+  .task-crop-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+  .task-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--gray-400);
+    font-size: 14px;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .data-mgmt {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  /* Modal */
+  .modal-mask {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+  }
+  .modal-mask.show { display: flex; }
+  .modal {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px;
+    width: 90%;
+    max-width: 460px;
+    box-shadow: var(--shadow-lg);
+    animation: modalIn 0.25s;
+  }
+  @keyframes modalIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+  .modal h3 { font-size: 18px; margin-bottom: 18px; color: var(--gray-900); }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-600); margin-bottom: 5px; white-space: nowrap; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.15s;
+    text-align: center;
+  }
+  .form-group input[type="date"] {
+    text-align: center;
+    line-height: 1.4;
+    padding: 10px 12px;
+    background-color: var(--gray-100);
+  }
+  .form-group input[type="date"]:focus { background-color: white; }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--gray-900);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    box-shadow: var(--shadow-lg);
+    z-index: 200;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  /* Molecular panel placeholder */
+  .placeholder-box {
+    background: white;
+    border-radius: var(--radius);
+    padding: 50px 30px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    color: var(--gray-400);
+  }
+  .placeholder-box .icon { font-size: 48px; margin-bottom: 12px; }
+  .placeholder-box .hint { font-size: 14px; margin-top: 8px; }
+
+  /* Export bar */
+  .export-bar {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 640px) {
+    header { padding: 20px 20px 16px; }
+    .title { font-size: 22px; }
+    .tabs, main { margin-left: 20px; margin-right: 20px; padding-left: 0; padding-right: 0; }
+    .tab-btn { padding: 10px 12px; font-size: 13px; }
+    main { padding: 20px 0 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title">长得好 🌿</div>
+  <div class="subtitle">农业研究工作台</div>
+  <div class="header-meta">
+    <span id="todayStr">📅 加载中...</span>
+    <span id="projectCount">0 个项目</span>
+  </div>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="transform">🧬 遗传转化</button>
+  <button class="tab-btn" data-tab="planting">🌾 种植</button>
+  <button class="tab-btn" data-tab="reminders">📋 每日任务</button>
+</div>
+
+<main>
+  <!-- 遗传转化 -->
+  <div class="panel active" id="panel-transform">
+    <div class="section-title"><span class="dot"></span>遗传转化项目</div>
+    <div class="project-grid" id="projectGrid"></div>
+  </div>
+
+  <!-- 种植 -->
+  <div class="panel" id="panel-planting">
+    <div class="section-title"><span class="dot"></span>种植记录</div>
+    <div class="planting-grid" id="plantingGrid"></div>
+  </div>
+
+  <!-- 每日任务 -->
+  <div class="panel" id="panel-reminders">
+    <div class="section-title"><span class="dot"></span>每日任务</div>
+    <div class="daily-header">
+      <div class="weekday-selector" id="weekdaySelector"></div>
+      <div class="daily-summary" id="dailySummary"></div>
+    </div>
+    <div class="task-list" id="taskList"></div>
+    <div class="data-mgmt">
+      <div class="section-title"><span class="dot"></span>数据管理</div>
+      <div class="export-bar">
+        <button class="btn btn-secondary" onclick="exportData()">⬇️ 导出数据 (JSON)</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">⬆️ 导入数据</button>
+        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- 添加项目弹窗 -->
+<div class="modal-mask" id="modalAddProject">
+  <div class="modal">
+    <h3>添加遗传转化项目</h3>
+    <div class="form-group">
+      <label>项目名称</label>
+      <input type="text" id="npName" placeholder="如：辣椒GUS">
+    </div>
+    <div class="form-group">
+      <label>作物类型</label>
+      <select id="npCrop">
+        <option value="pepper">辣椒</option>
+        <option value="tomato">番茄</option>
+        <option value="wheat">小麦</option>
+        <option value="other">其他</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>载体</label>
+      <input type="text" id="npVector" placeholder="如：DN001">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modalAddProject')">取消</button>
+      <button class="btn btn-primary" onclick="addProject()">添加</button>
+    </div>
+  </div>
+</div>
+
+<!-- 更新进展弹窗 -->
+<div class="modal-mask" id="modalProgress">
+  <div class="modal">
+    <h3>添加备注 — <span id="ppName"></span></h3>
+    <div class="form-group">
+      <label>备注内容</label>
+      <textarea id="ppContent" placeholder="如：叶片发黄，需加强光照"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modalProgress')">取消</button>
+      <button class="btn btn-primary" onclick="addProgress()">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 添加/编辑批次弹窗 -->
+<div class="modal-mask" id="modalBatch">
+  <div class="modal">
+    <h3 id="batchModalTitle">添加批次 — <span id="bpName"></span></h3>
+    <input type="hidden" id="bpEditId" value="">
+    <div class="form-group">
+      <label>批次</label>
+      <input type="text" id="bpBatchNo" placeholder="如：1">
+    </div>
+    <div class="form-group">
+      <label>外植体数量</label>
+      <input type="number" id="bpExplants" min="0" placeholder="如：60">
+    </div>
+    <div class="form-group">
+      <label>筛选日期</label>
+      <input type="date" id="bpScreenDate">
+    </div>
+    <div class="form-group" style="display:flex;gap:12px;">
+      <div style="flex:1;">
+        <label>荧光芽数</label>
+        <input type="number" id="bpFluorescent" min="0" placeholder="如：12">
+      </div>
+      <div style="flex:1;">
+        <label>生根苗数</label>
+        <input type="number" id="bpRooted" min="0" placeholder="如：8">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>备注（选填）</label>
+      <input type="text" id="bpNote" placeholder="如：第一批侵染">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modalBatch')">取消</button>
+      <button class="btn btn-primary" id="batchSaveBtn" onclick="addBatch()">保存批次</button>
+    </div>
+  </div>
+</div>
+
+<!-- 添加种植记录弹窗 -->
+<div class="modal-mask" id="modalPlanting">
+  <div class="modal">
+    <h3>添加种植记录</h3>
+    <div class="form-group">
+      <label>作物</label>
+      <select id="plCrop"></select>
+    </div>
+    <div class="form-group">
+      <label>日期</label>
+      <input type="date" id="plDate">
+    </div>
+    <div class="form-group">
+      <label>数量</label>
+      <input type="number" id="plCount" min="1" value="1">
+    </div>
+    <div class="form-group">
+      <label>备注</label>
+      <input type="text" id="plNote" placeholder="如：移栽、补种等">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modalPlanting')">取消</button>
+      <button class="btn btn-primary" onclick="addPlanting()">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 编辑项目弹窗 -->
+<div class="modal-mask" id="modalEditProject">
+  <div class="modal">
+    <h3>编辑项目 — <span id="epName"></span></h3>
+    <div class="form-group">
+      <label>项目名称</label>
+      <input type="text" id="epProjectName" placeholder="如：辣椒测试">
+    </div>
+    <div class="form-group">
+      <label>载体</label>
+      <input type="text" id="epVector" placeholder="如：DN001">
+    </div>
+    <div class="form-group">
+      <label>作物类型</label>
+      <select id="epCrop">
+        <option value="pepper">辣椒</option>
+        <option value="tomato">番茄</option>
+        <option value="wheat">小麦</option>
+        <option value="other">其他</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modalEditProject')">取消</button>
+      <button class="btn btn-primary" onclick="saveEditProject()">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 添加新作物弹窗 -->
+<div class="modal-mask" id="modalAddCrop">
+  <div class="modal">
+    <h3>添加新作物</h3>
+    <div class="form-group">
+      <label>作物名称</label>
+      <input type="text" id="acName" placeholder="如：玉米、大豆">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modalAddCrop')">取消</button>
+      <button class="btn btn-primary" onclick="addCrop()">添加</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== 数据层 =====
+const STORAGE_KEY = 'changdehao_workbench_v1';
+let state = {
+  projects: [],
+  planting: []
+};
+
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    try { state = JSON.parse(raw); } catch(e) { state = { projects:[], planting:[] }; }
+  }
+  // 初始化默认数据
+  if (!state.projects || state.projects.length === 0) {
+    state.projects = [
+      { id: id(), name: '辣椒测试', crop: 'pepper', vector: 'DN001', batches: [], progress: [] },
+      { id: id(), name: '辣椒PDS', crop: 'pepper', vector: 'DN122', batches: [], progress: [] },
+      { id: id(), name: '辣椒花青素', crop: 'pepper', vector: 'DN127', batches: [], progress: [] },
+      { id: id(), name: '辣椒发育基因', crop: 'pepper', vector: '', batches: [], progress: [] },
+      { id: id(), name: '番茄花青素', crop: 'tomato', vector: 'DN127', batches: [], progress: [] }
+    ];
+    save();
+  }
+  if (!state.planting || state.planting.length === 0) {
+    state.planting = [
+      { id: id(), crop: 'pepper', date: '2026-07-28', count: 4, note: '种植' },
+      { id: id(), crop: 'wheat', date: '2026-07-28', count: 90, note: '种植' }
+    ];
+    save();
+  }
+}
+function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+function id() { return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+const cropName = { pepper:'辣椒', tomato:'番茄', wheat:'小麦', other:'其他' };
+const cropClass = { pepper:'pepper', tomato:'tomato', wheat:'wheat', other:'' };
+const cropTagClass = { pepper:'tag-pepper', tomato:'tag-tomato', wheat:'tag-wheat', other:'tag-other' };
+
+// ===== 渲染 =====
+function renderProjects() {
+  const grid = document.getElementById('projectGrid');
+  grid.innerHTML = '';
+  state.projects.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'project-card ' + (cropClass[p.crop] || '');
+    const batches = p.batches || [];
+    const totalExplants = batches.reduce((s,b) => s + (b.explants||0), 0);
+    card.innerHTML = `
+      <div class="project-head">
+        <div>
+          <div class="project-name" style="cursor:pointer;" onclick="event.stopPropagation();editProject('${p.id}')">${esc(p.name)} ✎</div>
+          <div class="project-crop-tag ${cropTagClass[p.crop]||'tag-other'}" style="margin-top:4px;display:inline-block;cursor:pointer;" onclick="event.stopPropagation();editProject('${p.id}')">${cropName[p.crop]||p.crop} ✎</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary btn-small" onclick="openBatch('${p.id}')">+ 批次</button>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="chip vector" style="cursor:pointer;" onclick="event.stopPropagation();editProject('${p.id}')">载体 ${esc(p.vector||'未指定')} ✎</span>
+        <span class="chip">${batches.length} 批次</span>
+        ${totalExplants > 0 ? `<span class="chip">外植体 ${totalExplants}</span>` : ''}
+      </div>
+      ${batches.length > 0 ? `
+        <table class="batch-table">
+          <thead><tr><th>批次</th><th>外植体</th><th>荧光芽</th><th>生根苗</th><th>筛选日期</th><th>备注</th><th></th></tr></thead>
+          <tbody>
+            ${batches.map((b, i) => `
+              <tr>
+                <td class="batch-idx">${b.batchNo || (i+1)}</td>
+                <td><strong>${b.explants||'-'}</strong></td>
+                <td>${b.fluorescent != null ? b.fluorescent : '-'}</td>
+                <td>${b.rooted != null ? b.rooted : '-'}</td>
+                <td class="batch-date">${b.screenDate||'未填'}</td>
+                <td style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(b.note||'')}</td>
+                <td style="white-space:nowrap;">
+                  <button class="btn btn-secondary btn-small" style="padding:1px 7px;font-size:11px;" onclick="event.stopPropagation();editBatch('${p.id}','${b.id}')">✎</button>
+                  <button class="btn btn-danger btn-small" style="padding:1px 7px;font-size:11px;" onclick="event.stopPropagation();delBatch('${p.id}','${b.id}')">×</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      ` : '<div class="batch-empty">暂无批次，点击「+ 批次」添加</div>'}
+    `;
+    grid.appendChild(card);
+  });
+  // 添加卡片
+  const addCard = document.createElement('div');
+  addCard.className = 'add-card';
+  addCard.onclick = () => openModal('modalAddProject');
+  addCard.innerHTML = '<div class="plus">+</div><div class="text">添加新项目</div>';
+  grid.appendChild(addCard);
+
+  document.getElementById('projectCount').textContent = `${state.projects.length} 个项目`;
+}
+
+function renderPlanting() {
+  const grid = document.getElementById('plantingGrid');
+  grid.innerHTML = '';
+  const groups = {};
+  state.planting.forEach(r => {
+    if (!groups[r.crop]) groups[r.crop] = [];
+    groups[r.crop].push(r);
+  });
+  // 确保辣椒、小麦都显示
+  ['pepper','wheat','tomato'].forEach(c => {
+    if (!groups[c]) groups[c] = [];
+  });
+  Object.keys(groups).forEach(crop => {
+    const records = groups[crop].sort((a,b)=> b.date.localeCompare(a.date));
+    const total = records.reduce((s,r)=> s + (r.count||0), 0);
+    const card = document.createElement('div');
+    card.className = 'planting-card ' + (cropClass[crop] || '');
+    card.innerHTML = `
+      <div class="planting-head">
+        <div class="planting-title">${cropName[crop]||crop}</div>
+        <button class="btn btn-primary btn-small" onclick="openPlanting('${crop}')">+ 记录</button>
+      </div>
+      <div class="planting-count">${total}<span class="unit"> 株（累计）</span></div>
+      <div style="font-size:12px;color:var(--gray-400);margin-top:4px;">${records.length} 条记录</div>
+      <div class="planting-records">
+        ${records.length ? records.map(r => `
+          <div class="planting-record">
+            <span class="rdate">${r.date}</span>
+            <span><strong>+${r.count}</strong> ${r.note ? '· '+esc(r.note) : ''}</span>
+            <button class="btn btn-danger btn-small" style="padding:2px 8px;" onclick="delPlanting('${r.id}')">×</button>
+          </div>
+        `).join('') : '<div class="progress-empty">暂无记录</div>'}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  // 添加作物按钮
+  const addCard = document.createElement('div');
+  addCard.className = 'add-card';
+  addCard.onclick = () => openModal('modalAddCrop');
+  addCard.innerHTML = '<div class="plus">+</div><div class="text">添加新作物</div>';
+  grid.appendChild(addCard);
+}
+
+// ===== 每日任务配置 =====
+const TASK_CONFIG = {
+  3: [ // 周三
+    { icon:'🌶️', name:'萌发辣椒种子', tag:'辣椒', tagClass:'tag-pepper' },
+    { icon:'🧬', name:'侵染', tag:'操作', tagClass:'tag-other' }
+  ],
+  5: [ // 周五
+    { icon:'🍅', name:'萌发番茄种子', tag:'番茄', tagClass:'tag-tomato' },
+    { icon:'🔍', name:'转筛选', tag:'操作', tagClass:'tag-other', subculture: true }
+  ]
+};
+const SUBCULTURE_DAYS = 21; // 转筛选后 21 天继代
+const WEEKDAY_NAMES = ['日','一','二','三','四','五','六'];
+
+// 筛选记录：每次打勾「转筛选」时写入，用于推算继代日期
+// 格式: { date: '2026-08-01', done: true/false }  存 localStorage key: 'changdehao_subcultures'
+
+// ===== 每日任务 =====
+let selectedWeekday = new Date().getDay();
+
+function renderWeekdaySelector() {
+  const sel = document.getElementById('weekdaySelector');
+  const today = new Date().getDay();
+  sel.innerHTML = WEEKDAY_NAMES.map((name, i) => {
+    let cls = 'weekday-btn';
+    if (i === selectedWeekday) cls += ' active';
+    if (i === today) cls += ' today';
+    return `<button class="${cls}" data-dow="${i}" onclick="selectWeekday(${i})">${name}</button>`;
+  }).join('');
+}
+
+function selectWeekday(dow) {
+  selectedWeekday = dow;
+  renderWeekdaySelector();
+  renderTaskList();
+}
+
+function getSubcultureRecords() {
+  const raw = localStorage.getItem('changdehao_subcultures');
+  return raw ? JSON.parse(raw) : [];
+}
+function setSubcultureRecords(records) {
+  localStorage.setItem('changdehao_subcultures', JSON.stringify(records));
+}
+
+// 判断某天是否是某个筛选日期的第 N*21 天（N>=1）
+function getSubcultureSource(dateStr) {
+  const recs = getSubcultureRecords();
+  const target = new Date(dateStr + 'T00:00:00+08:00');
+  for (const r of recs) {
+    if (!r.date) continue;
+    const src = new Date(r.date + 'T00:00:00+08:00');
+    const diff = (target - src) / (1000 * 60 * 60 * 24);
+    if (diff > 0 && diff % SUBCULTURE_DAYS === 0) {
+      const week = Math.round(diff / SUBCULTURE_DAYS);
+      return { sourceDate: r.date, week };
+    }
+  }
+  return null;
+}
+
+function renderTaskList() {
+  const list = document.getElementById('taskList');
+  const summary = document.getElementById('dailySummary');
+  let tasks = [...(TASK_CONFIG[selectedWeekday] || [])];
+  const today = new Date().getDay();
+
+  // 计算当天是否有继代任务
+  const dateStr = todayDateStr();
+  const sc = getSubcultureSource(dateStr);
+  if (sc) {
+    tasks.push({
+      icon:'🧪', name:`继代（第${sc.week}次，源于${sc.sourceDate}筛选）`, tag:'继代', tagClass:'tag-other', isSubculture: true
+    });
+  }
+
+  // 摘要
+  if (selectedWeekday === today) {
+    summary.innerHTML = tasks.length
+      ? `今天有 <strong>${tasks.length}</strong> 项任务`
+      : '今天没有固定任务 🎉';
+  } else {
+    summary.innerHTML = `周${WEEKDAY_NAMES[selectedWeekday]} · ${tasks.length} 项任务`;
+  }
+
+  if (!tasks.length) {
+    list.innerHTML = `<div class="task-empty">周${WEEKDAY_NAMES[selectedWeekday]}暂无固定任务，放松一下~</div>`;
+    return;
+  }
+
+  list.innerHTML = tasks.map((t, idx) => {
+    const key = `duty_${dateStr}_${selectedWeekday}_${t.name}`;
+    const done = localStorage.getItem(key) === '1';
+    return `
+      <div class="task-card ${done ? 'done' : ''}" onclick="toggleTask(this, '${key}', ${t.subculture || t.isSubculture || false}, '${escJs(t.name)}')">
+        <div class="task-check">✓</div>
+        <div class="task-icon">${t.icon}</div>
+        <div class="task-info">
+          <div class="task-name">${t.name}</div>
+          <div class="task-crop-tag ${t.tagClass}">${t.tag}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function escJs(s) { return (s||'').replace(/'/g, "\\'").replace(/"/g, '&quot;'); }
+
+function todayDateStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+}
+
+function toggleTask(el, key, isSubculture, taskName) {
+  const isDone = el.classList.contains('done');
+  if (isDone) {
+    el.classList.remove('done');
+    localStorage.removeItem(key);
+    // 如果取消完成的是「转筛选」，删除对应的筛选记录
+    if (taskName === '转筛选') {
+      const recs = getSubcultureRecords();
+      const dateStr = todayDateStr();
+      setSubcultureRecords(recs.filter(r => r.date !== dateStr));
+    }
+  } else {
+    el.classList.add('done');
+    localStorage.setItem(key, '1');
+    // 如果完成的是「转筛选」，记录筛选日期
+    if (taskName === '转筛选') {
+      const recs = getSubcultureRecords();
+      const dateStr = todayDateStr();
+      if (!recs.find(r => r.date === dateStr)) {
+        recs.push({ date: dateStr, done: true });
+        setSubcultureRecords(recs);
+      }
+    }
+  }
+  renderTaskList();
+}
+
+function renderReminders() {
+  renderWeekdaySelector();
+  renderTaskList();
+}
+
+function renderHeader() {
+  const now = new Date();
+  const w = ['日','一','二','三','四','五','六'];
+  document.getElementById('todayStr').textContent = `📅 ${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日 周${w[now.getDay()]}`;
+}
+
+// ===== 事件 =====
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  };
+});
+
+function openModal(id) { document.getElementById(id).classList.add('show'); }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+
+function addProject() {
+  const name = document.getElementById('npName').value.trim();
+  const crop = document.getElementById('npCrop').value;
+  const vector = document.getElementById('npVector').value.trim();
+  if (!name) { toast('请输入项目名称'); return; }
+  state.projects.push({ id: id(), name, crop, vector, batches: [], progress: [] });
+  save();
+  renderProjects();
+  document.getElementById('npName').value = '';
+  document.getElementById('npVector').value = '';
+  closeModal('modalAddProject');
+  toast('项目已添加');
+}
+
+function delProject(pid) {
+  if (!confirm('确认删除该项目及其所有进展？')) return;
+  state.projects = state.projects.filter(p => p.id !== pid);
+  save();
+  renderProjects();
+  toast('已删除');
+}
+
+let currentEditProjectId = null;
+function editProject(pid) {
+  const p = state.projects.find(x => x.id === pid);
+  if (!p) return;
+  currentEditProjectId = pid;
+  document.getElementById('epName').textContent = p.name;
+  document.getElementById('epProjectName').value = p.name;
+  document.getElementById('epVector').value = p.vector || '';
+  document.getElementById('epCrop').value = p.crop || 'other';
+  openModal('modalEditProject');
+}
+
+function saveEditProject() {
+  const p = state.projects.find(x => x.id === currentEditProjectId);
+  if (!p) return;
+  const newName = document.getElementById('epProjectName').value.trim();
+  if (!newName) { toast('项目名称不能为空'); return; }
+  p.name = newName;
+  p.vector = document.getElementById('epVector').value.trim();
+  p.crop = document.getElementById('epCrop').value;
+  save();
+  renderProjects();
+  closeModal('modalEditProject');
+  toast('项目已更新');
+}
+
+let currentProjectId = null;
+function openProgress(pid) {
+  const p = state.projects.find(x => x.id === pid);
+  if (!p) return;
+  currentProjectId = pid;
+  document.getElementById('ppName').textContent = p.name;
+  document.getElementById('ppContent').value = '';
+  openModal('modalProgress');
+}
+
+function addProgress() {
+  const content = document.getElementById('ppContent').value.trim();
+  if (!content) { toast('请输入备注内容'); return; }
+  const p = state.projects.find(x => x.id === currentProjectId);
+  if (!p) return;
+  const now = new Date();
+  const time = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  if (!p.progress) p.progress = [];
+  p.progress.push({ time, content });
+  save();
+  renderProjects();
+  closeModal('modalProgress');
+  toast('备注已保存');
+}
+
+let currentBatchProjectId = null;
+let currentBatchEditId = null;
+
+function openBatch(pid) {
+  const p = state.projects.find(x => x.id === pid);
+  if (!p) return;
+  currentBatchProjectId = pid;
+  currentBatchEditId = null;
+  document.getElementById('batchModalTitle').innerHTML = '添加批次 — <span id="bpName">' + esc(p.name) + '</span>';
+  document.getElementById('batchSaveBtn').textContent = '保存批次';
+  document.getElementById('bpEditId').value = '';
+  const nextNo = (p.batches || []).length + 1;
+  document.getElementById('bpBatchNo').value = nextNo;
+  document.getElementById('bpExplants').value = '';
+  document.getElementById('bpScreenDate').value = '';
+  document.getElementById('bpFluorescent').value = '';
+  document.getElementById('bpRooted').value = '';
+  document.getElementById('bpNote').value = '';
+  openModal('modalBatch');
+}
+
+function editBatch(pid, bid) {
+  const p = state.projects.find(x => x.id === pid);
+  if (!p) return;
+  const batch = (p.batches || []).find(b => b.id === bid);
+  if (!batch) return;
+  currentBatchProjectId = pid;
+  currentBatchEditId = bid;
+  document.getElementById('batchModalTitle').innerHTML = '编辑批次 — <span id="bpName">' + esc(p.name) + '</span>';
+  document.getElementById('batchSaveBtn').textContent = '更新批次';
+  document.getElementById('bpEditId').value = bid;
+  document.getElementById('bpBatchNo').value = batch.batchNo || '';
+  document.getElementById('bpExplants').value = batch.explants || '';
+  document.getElementById('bpScreenDate').value = batch.screenDate || '';
+  document.getElementById('bpFluorescent').value = batch.fluorescent != null ? batch.fluorescent : '';
+  document.getElementById('bpRooted').value = batch.rooted != null ? batch.rooted : '';
+  document.getElementById('bpNote').value = batch.note || '';
+  openModal('modalBatch');
+}
+
+function addBatch() {
+  const p = state.projects.find(x => x.id === currentBatchProjectId);
+  if (!p) return;
+  const batchNo = document.getElementById('bpBatchNo').value.trim();
+  const explants = parseInt(document.getElementById('bpExplants').value) || 0;
+  const screenDate = document.getElementById('bpScreenDate').value;
+  const fluorescent = document.getElementById('bpFluorescent').value !== '' ? parseInt(document.getElementById('bpFluorescent').value) : null;
+  const rooted = document.getElementById('bpRooted').value !== '' ? parseInt(document.getElementById('bpRooted').value) : null;
+  const note = document.getElementById('bpNote').value.trim();
+  if (!screenDate && explants === 0 && !batchNo) { toast('至少填写批次、外植体数量或筛选日期'); return; }
+
+  const editId = document.getElementById('bpEditId').value;
+  if (editId) {
+    // 编辑模式
+    const batch = (p.batches || []).find(b => b.id === editId);
+    if (batch) {
+      batch.batchNo = batchNo;
+      batch.explants = explants;
+      batch.screenDate = screenDate;
+      batch.fluorescent = fluorescent;
+      batch.rooted = rooted;
+      batch.note = note;
+    }
+    toast('批次已更新');
+  } else {
+    // 新增模式
+    if (!p.batches) p.batches = [];
+    p.batches.push({ id: id(), batchNo, explants, screenDate, fluorescent, rooted, note });
+    toast('批次已添加');
+  }
+  save();
+  renderProjects();
+  closeModal('modalBatch');
+}
+
+function delBatch(pid, bid) {
+  const p = state.projects.find(x => x.id === pid);
+  if (!p) return;
+  p.batches = (p.batches || []).filter(b => b.id !== bid);
+  save();
+  renderProjects();
+  toast('批次已删除');
+}
+
+function openPlanting(crop) {
+  // 动态填充作物选项
+  const allCrops = [...new Set(state.planting.map(r => r.crop))];
+  ['pepper','wheat','tomato'].forEach(c => { if (!allCrops.includes(c)) allCrops.push(c); });
+  const sel = document.getElementById('plCrop');
+  sel.innerHTML = allCrops.map(c => `<option value="${esc(c)}">${cropName[c]||c}</option>`).join('');
+  sel.value = crop || 'pepper';
+  const now = new Date();
+  document.getElementById('plDate').value = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+  document.getElementById('plCount').value = 1;
+  document.getElementById('plNote').value = '';
+  openModal('modalPlanting');
+}
+
+function addPlanting() {
+  const crop = document.getElementById('plCrop').value;
+  const date = document.getElementById('plDate').value;
+  const count = parseInt(document.getElementById('plCount').value);
+  const note = document.getElementById('plNote').value.trim();
+  if (!date || !count) { toast('请填写日期和数量'); return; }
+  state.planting.push({ id: id(), crop, date, count, note });
+  save();
+  renderPlanting();
+  closeModal('modalPlanting');
+  toast('种植记录已添加');
+}
+
+function delPlanting(rid) {
+  if (!confirm('删除该记录？')) return;
+  state.planting = state.planting.filter(r => r.id !== rid);
+  save();
+  renderPlanting();
+  toast('已删除');
+}
+
+function addCrop() {
+  const name = document.getElementById('acName').value.trim();
+  if (!name) { toast('请输入作物名称'); return; }
+  // 添加一条空记录来创建这个作物卡片
+  const now = new Date();
+  const dateStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+  state.planting.push({ id: id(), crop: name, date: dateStr, count: 0, note: '新增作物' });
+  save();
+  renderPlanting();
+  closeModal('modalAddCrop');
+  document.getElementById('acName').value = '';
+  toast('作物已添加');
+}
+
+// ===== 工具 =====
+function pad(n) { return n < 10 ? '0'+n : ''+n; }
+function esc(s) { const d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2000);
+}
+
+function exportData() {
+  const exportObj = {
+    projects: state.projects,
+    planting: state.planting || [],
+    subcultures: getSubcultureRecords()
+  };
+  const blob = new Blob([JSON.stringify(exportObj, null, 2)], { type:'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `长得好_数据_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  toast('已导出');
+}
+
+function importData(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (data.projects) state.projects = data.projects;
+      if (data.planting) state.planting = data.planting;
+      if (data.subcultures) setSubcultureRecords(data.subcultures);
+      save();
+      renderAll();
+      toast('导入成功');
+    } catch(err) { toast('导入失败：格式错误'); }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+}
+
+function renderAll() {
+  renderHeader();
+  renderProjects();
+  renderPlanting();
+  renderReminders();
+}
+
+// 启动
+load();
+renderAll();
+
+// 如果当天有任务（包括动态继代），默认打开每日任务标签
+const todayDow = new Date().getDay();
+const todayTasks = [...(TASK_CONFIG[todayDow] || [])];
+const scToday = getSubcultureSource(todayDateStr());
+if (scToday) todayTasks.push({ name: '继代' });
+if (todayTasks.length > 0) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.tab-btn[data-tab="reminders"]').classList.add('active');
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-reminders').classList.add('active');
+}
+</script>
+</body>
+</html>
