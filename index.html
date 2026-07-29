@@ -552,7 +552,88 @@
     display: flex;
     gap: 10px;
     justify-content: flex-end;
+    flex-wrap: wrap;
   }
+
+  /* Sync panel */
+  .sync-panel {
+    margin-top: 20px;
+    background: var(--gray-50);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .sync-panel h4 {
+    font-size: 15px;
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sync-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .sync-status.online { background: #dcfce7; color: #166534; }
+  .sync-status.offline { background: #fef3c7; color: #92400e; }
+  .sync-status.error { background: #fee2e2; color: #991b1b; }
+  .sync-status .dot-sync {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .sync-status.online .dot-sync { background: #22c55e; animation: pulse 2s infinite; }
+  .sync-status.offline .dot-sync { background: #f59e0b; }
+  .sync-status.error .dot-sync { background: #ef4444; }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .sync-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .sync-row input {
+    flex: 1;
+    min-width: 180px;
+    padding: 8px 12px;
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .sync-row input:focus {
+    outline: none;
+    border-color: var(--green-500);
+  }
+  .btn-sync {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-sync.primary { background: var(--green-600); color: #fff; }
+  .btn-sync.primary:hover { background: var(--green-700); }
+  .btn-sync.outline {
+    background: #fff;
+    color: var(--green-600);
+    border: 1px solid var(--green-600);
+  }
+  .btn-sync.outline:hover { background: var(--green-50); }
+  .sync-hint {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 8px;
+  }
+  .sync-hint a { color: var(--green-600); }
 
   @media (max-width: 640px) {
     header { padding: 20px 20px 16px; }
@@ -607,6 +688,15 @@
         <button class="btn btn-secondary" onclick="exportData()">⬇️ 导出数据 (JSON)</button>
         <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">⬆️ 导入数据</button>
         <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+      </div>
+      <div class="sync-panel">
+        <h4>☁️ 自动云同步 <span class="sync-status offline" id="syncStatus"><span class="dot-sync"></span><span id="syncLabel">未配置</span></span></h4>
+        <p class="sync-hint">通过 GitHub Gist 同步，让主屏幕 App 和浏览器数据保持一致。需要 <a href="https://github.com/settings/tokens/new?scopes=gist&description=changdehao-sync" target="_blank">创建 GitHub Token</a>（只勾选 gist 权限），然后把 token 和 Gist ID 填入下方。</p>
+        <div class="sync-row">
+          <input type="password" id="syncToken" placeholder="GitHub Token (ghp_xxx)" onchange="saveSyncConfig()">
+          <input type="text" id="syncGistId" placeholder="Gist ID (可选，留空自动创建)" onchange="saveSyncConfig()">
+          <button class="btn-sync outline" onclick="syncNow()">🔄 立即同步</button>
+        </div>
       </div>
     </div>
   </div>
@@ -797,8 +887,225 @@ function load() {
     save();
   }
 }
-function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); scheduleSync(); }
 function id() { return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+// ===== 云同步 (GitHub Gist) =====
+const SYNC_KEY = 'changdehao_sync_config';
+let syncConfig = { token: '', gistId: '', lastSync: 0 };
+let syncTimer = null;
+
+function loadSyncConfig() {
+  try {
+    const raw = localStorage.getItem(SYNC_KEY);
+    if (raw) syncConfig = JSON.parse(raw);
+    document.getElementById('syncToken').value = syncConfig.token || '';
+    document.getElementById('syncGistId').value = syncConfig.gistId || '';
+    updateSyncStatus();
+  } catch(e) {}
+}
+
+function saveSyncConfig() {
+  syncConfig.token = document.getElementById('syncToken').value.trim();
+  syncConfig.gistId = document.getElementById('syncGistId').value.trim();
+  localStorage.setItem(SYNC_KEY, JSON.stringify(syncConfig));
+  updateSyncStatus();
+  if (syncConfig.token && syncConfig.gistId) {
+    // 有新配置，立即尝试同步
+    scheduleSync(1000);
+  }
+}
+
+function updateSyncStatus() {
+  const el = document.getElementById('syncStatus');
+  const label = document.getElementById('syncLabel');
+  if (!el || !label) return;
+  el.className = 'sync-status';
+  if (syncConfig.token && syncConfig.gistId) {
+    el.classList.add('online');
+    label.textContent = '已配置 · 自动同步中';
+  } else if (syncConfig.token) {
+    el.classList.add('offline');
+    label.textContent = '已配置 Token · 需 Gist ID';
+  } else {
+    el.classList.add('offline');
+    label.textContent = '未配置';
+  }
+}
+
+function scheduleSync(delay) {
+  if (syncTimer) clearTimeout(syncTimer);
+  if (!syncConfig.token || !syncConfig.gistId) return;
+  const ms = delay || 3000; // 默认3秒防抖
+  syncTimer = setTimeout(() => pushToGist(), ms);
+}
+
+async function pushToGist() {
+  if (!syncConfig.token || !syncConfig.gistId) return;
+  const exportObj = {
+    projects: state.projects,
+    planting: state.planting || [],
+    subcultures: getSubcultureRecords(),
+    updatedAt: new Date().toISOString()
+  };
+  const content = JSON.stringify(exportObj, null, 2);
+  
+  try {
+    const resp = await fetch(`https://api.github.com/gists/${syncConfig.gistId}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `token ${syncConfig.token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github.v3+json'
+      },
+      body: JSON.stringify({
+        files: { 'changdehao-data.json': { content } }
+      })
+    });
+    if (resp.ok) {
+      syncConfig.lastSync = Date.now();
+      localStorage.setItem(SYNC_KEY, JSON.stringify(syncConfig));
+      console.log('✅ 数据已同步到云端');
+    } else if (resp.status === 404) {
+      // Gist 不存在，创建新的
+      await createGist(content);
+    } else {
+      console.warn('⚠️ 同步失败:', resp.status);
+      setSyncError();
+    }
+  } catch(e) {
+    console.warn('⚠️ 同步网络错误:', e.message);
+    setSyncError();
+  }
+}
+
+async function createGist(content) {
+  try {
+    const resp = await fetch('https://api.github.com/gists', {
+      method: 'POST',
+      headers: {
+        'Authorization': `token ${syncConfig.token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github.v3+json'
+      },
+      body: JSON.stringify({
+        description: '长得好工作台 · 自动同步数据',
+        public: false,
+        files: { 'changdehao-data.json': { content } }
+      })
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      syncConfig.gistId = data.id;
+      syncConfig.lastSync = Date.now();
+      document.getElementById('syncGistId').value = data.id;
+      localStorage.setItem(SYNC_KEY, JSON.stringify(syncConfig));
+      updateSyncStatus();
+      toast('✅ Gist 已创建并同步');
+    } else {
+      toast('⚠️ 创建 Gist 失败，请检查 Token');
+    }
+  } catch(e) {
+    toast('⚠️ 网络错误，请重试');
+  }
+}
+
+async function pullFromGist() {
+  if (!syncConfig.token || !syncConfig.gistId) {
+    toast('请先配置 Token 和 Gist ID');
+    return;
+  }
+  try {
+    const resp = await fetch(`https://api.github.com/gists/${syncConfig.gistId}`, {
+      headers: {
+        'Authorization': `token ${syncConfig.token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+    if (!resp.ok) { toast('⚠️ 拉取失败，请检查配置'); return; }
+    const data = await resp.json();
+    const file = data.files && data.files['changdehao-data.json'];
+    if (!file || !file.content) { toast('⚠️ Gist 中无数据'); return; }
+    const remote = JSON.parse(file.content);
+    const remoteTime = remote.updatedAt ? new Date(remote.updatedAt).getTime() : 0;
+    const localTime = syncConfig.lastSync || 0;
+    
+    if (remoteTime <= localTime) {
+      toast('✅ 已是最新数据');
+      return;
+    }
+    
+    // 合并数据：远端覆盖本地
+    if (remote.projects) state.projects = remote.projects;
+    if (remote.planting) state.planting = remote.planting;
+    if (remote.subcultures) setSubcultureRecords(remote.subcultures);
+    syncConfig.lastSync = Date.now();
+    localStorage.setItem(SYNC_KEY, JSON.stringify(syncConfig));
+    save();
+    renderAll();
+    toast('✅ 已从云端同步最新数据');
+  } catch(e) {
+    toast('⚠️ 同步失败: ' + e.message);
+  }
+}
+
+function syncNow() {
+  if (!syncConfig.token) {
+    toast('请先填入 GitHub Token');
+    return;
+  }
+  if (!syncConfig.gistId) {
+    // 自动创建 Gist
+    const exportObj = {
+      projects: state.projects,
+      planting: state.planting || [],
+      subcultures: getSubcultureRecords(),
+      updatedAt: new Date().toISOString()
+    };
+    createGist(JSON.stringify(exportObj, null, 2));
+    return;
+  }
+  toast('🔄 正在同步...');
+  pushToGist().then(() => toast('✅ 同步完成'));
+}
+
+function setSyncError() {
+  const el = document.getElementById('syncStatus');
+  const label = document.getElementById('syncLabel');
+  if (el && label) {
+    el.className = 'sync-status error';
+    label.textContent = '同步失败';
+    setTimeout(updateSyncStatus, 5000);
+  }
+}
+
+// 页面加载时从云端拉取
+async function initialPull() {
+  if (!syncConfig.token || !syncConfig.gistId) return;
+  try {
+    const resp = await fetch(`https://api.github.com/gists/${syncConfig.gistId}`, {
+      headers: {
+        'Authorization': `token ${syncConfig.token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+    if (!resp.ok) return;
+    const data = await resp.json();
+    const file = data.files && data.files['changdehao-data.json'];
+    if (!file || !file.content) return;
+    const remote = JSON.parse(file.content);
+    const remoteTime = remote.updatedAt ? new Date(remote.updatedAt).getTime() : 0;
+    const localTime = syncConfig.lastSync || 0;
+    if (remoteTime > localTime) {
+      if (remote.projects) state.projects = remote.projects;
+      if (remote.planting) state.planting = remote.planting;
+      if (remote.subcultures) setSubcultureRecords(remote.subcultures);
+      syncConfig.lastSync = Date.now();
+      localStorage.setItem(SYNC_KEY, JSON.stringify(syncConfig));
+      console.log('✅ 启动时从云端加载了最新数据');
+    }
+  } catch(e) { /* 静默失败 */ }
+}
 
 const cropName = { pepper:'辣椒', tomato:'番茄', wheat:'小麦', other:'其他' };
 const cropClass = { pepper:'pepper', tomato:'tomato', wheat:'wheat', other:'' };
@@ -1328,8 +1635,14 @@ function renderAll() {
 
 // 启动
 load();
-renderAll();
+loadSyncConfig();
+initialPull().then(() => {
+  renderAll();
+  checkDailyTasks();
+});
 
+function checkDailyTasks() {
+function checkDailyTasks() {
 // 如果当天有任务（包括动态继代），默认打开每日任务标签
 const todayDow = new Date().getDay();
 const todayTasks = [...(TASK_CONFIG[todayDow] || [])];
@@ -1340,6 +1653,7 @@ if (todayTasks.length > 0) {
   document.querySelector('.tab-btn[data-tab="reminders"]').classList.add('active');
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.getElementById('panel-reminders').classList.add('active');
+}
 }
 </script>
 </body>
