@@ -1642,7 +1642,6 @@ initialPull().then(() => {
 });
 
 function checkDailyTasks() {
-function checkDailyTasks() {
 // 如果当天有任务（包括动态继代），默认打开每日任务标签
 const todayDow = new Date().getDay();
 const todayTasks = [...(TASK_CONFIG[todayDow] || [])];
